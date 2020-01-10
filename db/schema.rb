@@ -10,15 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_155145) do
+ActiveRecord::Schema.define(version: 2020_01_09_205312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "news", force: :cascade do |t|
+    t.string "author"
+    t.string "title"
+    t.string "description"
+    t.string "url"
+    t.string "urlToImage"
+    t.datetime "publishedAt"
+    t.string "content"
+    t.bigint "users_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["users_id"], name: "index_news_on_users_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.bigint "users_id", null: false
+    t.string "query"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["users_id"], name: "index_searches_on_users_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
-    t.string "first_name"
-    t.string "last_name"
+    t.string "username"
     t.string "password_digest", null: false
     t.string "role", default: "user", null: false
     t.datetime "last_login"
@@ -27,4 +49,6 @@ ActiveRecord::Schema.define(version: 2020_01_09_155145) do
     t.index ["password_digest"], name: "index_users_on_password_digest"
   end
 
+  add_foreign_key "news", "users", column: "users_id"
+  add_foreign_key "searches", "users", column: "users_id"
 end

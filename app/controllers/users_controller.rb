@@ -13,17 +13,21 @@ class UsersController < ApplicationController
         render json: current_user
     end
 
+    def show
+        render json: current_user
+      end
+
     def create
         user = User.new(user_params)
         if user.save
-            render json: {status: 200, msg: 'User was created.'}
+            render json: {user: user, status: 200, msg: 'User was created.'}
         end
     end
 
     def update
         user = User.find(params[:id])
         if user.update(user_params)
-            render json: { status: 200, msg: 'User details have been updated.' }
+            render json: { user: user, status: 200, msg: 'User details have been updated.' }
         end
     end
 
@@ -37,7 +41,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 
     def authorize
