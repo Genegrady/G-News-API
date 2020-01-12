@@ -17,12 +17,4 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 7 }
 
 
-    def can_modify_user?(user_id)
-        role == 'admin' || id.to_s == user_id.to_s
-    end
-
-    def is_admin?
-        role == 'admin'
-    end
-
 end

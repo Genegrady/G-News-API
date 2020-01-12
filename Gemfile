@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'active_model_serializers' 
 #Knock gem to manage the JWT management process.
-gem 'knock', '~> 2.1', '>= 2.1.1'
+# gem 'knock', '~> 2.1', '>= 2.1.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

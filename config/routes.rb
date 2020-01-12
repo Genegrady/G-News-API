@@ -7,12 +7,11 @@ Rails.application.routes.draw do
   
   # post 'find_user' => 'users#find'
   root 'home#index'
-  get   '/auth' => 'home#auth'
-  post   '/login' => 'user_token#create'
+  get   '/auth' => 'auth#persist'
+  post   '/login' => 'auth#login'
 
 
   get    '/users'          => 'users#index'
-  get    '/users/current'  => 'users#current'
   post   '/signup'         => 'users#create'
   patch  '/user/:id'       => 'users#update'
   delete '/user/:id'       => 'users#destroy'
