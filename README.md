@@ -1,24 +1,51 @@
-# README
+G-News (Backend)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend for a React application based on Google news built using a combination of React, Redux, and Hooks
 
-Things you may want to cover:
+The application uses a Rails API backend using restful routes and standard conventions.
 
-* Ruby version
+Features:
 
-* System dependencies
+As user, one is able to create a profile, change their photo and sign in and sign out using JWT Auth going to a rails backend API
 
-* Configuration
+A user can save their favorite articles, see all of their saved searches as well as rerender them by clicking on the search.
 
-* Database creation
+The articles come from the newsapi.org API
 
-* Database initialization
+Weather data is gathered from The NWS API
 
-* How to run the test suite
+This app uses the following node packages:
 
-* Services (job queues, cache servers, search engines, etc.)
+react-live-clock
 
-* Deployment instructions
+react-offcanvas
 
-* ...
+react-linkify
+
+firebase
+
+sweetalert
+
+react-sharingbuttons
+
+axios
+
+DEMO
+
+https://youtu.be/7BKwZDUc_1Q
+
+Installation:
+
+To view locally, follow the instructions below
+
+Clone repository
+
+bundle install
+
+rails s -p 5000
+
+Server needs to run on http://localhost:5000
+
+Go to backend repository to view backend installation: View [frontend](https://github.com/Genegrady/G-News-React-Redux-App)
+
+Built By: [Eugene Grady](https://github.com/Genegrady)
