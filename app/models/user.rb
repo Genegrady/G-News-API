@@ -2,10 +2,12 @@ class User < ApplicationRecord
     has_secure_password
 
     has_many :searches
+    accepts_nested_attributes_for :searches, :allow_destroy => true
     has_many :news
+    accepts_nested_attributes_for :news, :allow_destroy => true
 
     # Basic password validation, configure to your liking.
-    validates_length_of :password, maximum: 72, minimum: 8, allow_nil: true, allow_blank: false
+    # validates_length_of :password, maximum: 72, minimum: 8, allow_nil: true, allow_blank: false
     validates_confirmation_of :password, allow_nil: true, allow_blank: false
 
     before_validation{
@@ -14,7 +16,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true
     validates :email, uniqueness: true, presence: true
-    validates :password, presence: true, length: { minimum: 7 }
+    # validates :password, presence: true, length: { minimum: 7 }
 
 
 end

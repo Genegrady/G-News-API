@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_205312) do
+ActiveRecord::Schema.define(version: 2020_01_17_145133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,32 +23,33 @@ ActiveRecord::Schema.define(version: 2020_01_09_205312) do
     t.string "urlToImage"
     t.datetime "publishedAt"
     t.string "content"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_news_on_users_id"
+    t.index ["user_id"], name: "index_news_on_user_id"
   end
 
   create_table "searches", force: :cascade do |t|
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.string "query"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_searches_on_users_id"
+    t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "username"
-    t.string "password_digest", null: false
+    t.string "password_digest"
     t.string "role", default: "user", null: false
     t.datetime "last_login"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar"
     t.index ["password_digest"], name: "index_users_on_password_digest"
   end
 
-  add_foreign_key "news", "users", column: "users_id"
-  add_foreign_key "searches", "users", column: "users_id"
+  add_foreign_key "news", "users"
+  add_foreign_key "searches", "users"
 end

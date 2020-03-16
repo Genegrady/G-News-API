@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
- before_action :authenticate_user
+#  before_action :authenticate_user
 
  def index
     searches = Search.all 
@@ -35,8 +35,8 @@ end
     private
 
     def search_params
-        params.require(:search).permit(
-            :name, query
+        params.permit(
+            :name, :query, :user_id
         )
     end
 end

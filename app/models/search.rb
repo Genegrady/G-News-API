@@ -1,3 +1,3 @@
 class Search < ApplicationRecord
-  belongs_to :users
+  belongs_to :user, optional: false
 end

@@ -1,5 +1,5 @@
 class NewsController < ApplicationController
- before_action :authenticate_user
+#  before_action :authenticate_user
 
  def index
     allnews = News.all 
@@ -28,8 +28,8 @@ class NewsController < ApplicationController
  private
 
  def news_params
-    params.require(:news).permit(
-        :author, :title, :description, :url, :urlToImage, :publishedAt, :content
+    params.permit(
+        :author, :title, :description, :url, :urlToImage, :publishedAt, :content, :user_id
     )
  end
 end
